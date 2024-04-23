@@ -1,0 +1,21 @@
+﻿<Window x:Class="WPF_LoginUI.Index"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_LoginUI"
+        mc:Ignorable="d"
+        Title="打开的Index界面" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="81*"/>
+            <ColumnDefinition Width="719*"/>
+        </Grid.ColumnDefinitions>
+        <ListView Grid.ColumnSpan="2">
+            <ListViewItem>一起来学WPF</ListViewItem>
+            <ListViewItem>一起来学WPF</ListViewItem>
+            <ListViewItem>一起来学WPF</ListViewItem>
+            <ListViewItem>一起来学WPF</ListViewItem>
+        </ListView>
+    </Grid>
+</Window>
