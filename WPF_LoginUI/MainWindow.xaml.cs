@@ -20,50 +20,24 @@ namespace WPF_LoginUI
     /// <summary>
     /// MainWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class MainWindow : Window,INotifyPropertyChanged
+    public partial class MainWindow : Window
     {
+        LoginModel loginModel;
         public MainWindow()
         {
             InitializeComponent();
+            loginModel = new LoginModel();  
+
             this.DataContext = this;
         }
 
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void RaisePropertyChanged(string propertyName)
-        {
-            PropertyChangedEventHandler handler = PropertyChanged;
-            if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        private string _UserName;
-
-        public string UserName
-        {
-            get { return _UserName; }
-            set { 
-                _UserName = value;
-                RaisePropertyChanged("UserName");
-            }
-        }
-
-        private string _Password;
-
-        public string Password
-        {
-            get { return _Password; }
-            set
-            {
-                _Password = value;
-                RaisePropertyChanged("Password");
-            }
-        }
-
+        
         private void Button_click(object sender, RoutedEventArgs e)
         {
 
 
-            if (UserName == "123" && Password == "2")
+            if (loginModel.UserName == "123" && loginModel.Password == "2")
             {
                 MessageBox.Show("登录成功");
                 Index index = new Index();
@@ -76,8 +50,42 @@ namespace WPF_LoginUI
                 MessageBox.Show("输入的用户名和密码不正确");
                 
             }
-            UserName = "";
-            Password = "";
+            loginModel.UserName = "";
+            loginModel.Password = "";
         }
     }
+}
+ public class LoginModel:INotifyPropertyChanged
+{
+    public event PropertyChangedEventHandler PropertyChanged;
+    private void RaisePropertyChanged(string propertyName)
+    {
+        PropertyChangedEventHandler handler = PropertyChanged;
+        if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    private string _UserName;
+
+    public string UserName
+    {
+        get { return _UserName; }
+        set
+        {
+            _UserName = value;
+            RaisePropertyChanged("UserName");
+        }
+    }
+
+    private string _Password;
+
+    public string Password
+    {
+        get { return _Password; }
+        set
+        {
+            _Password = value;
+            RaisePropertyChanged("Password");
+        }
+    }
+
 }
