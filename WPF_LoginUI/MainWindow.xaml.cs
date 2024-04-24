@@ -22,13 +22,16 @@ namespace WPF_LoginUI
     /// </summary>
     public partial class MainWindow : Window
     {
-        LoginModel loginModel;
+        LoginViewModel viewModel;
         public MainWindow()
         {
-            InitializeComponent();
-            loginModel = new LoginModel();  
 
-            this.DataContext = this;
+            InitializeComponent();
+
+            viewModel = new LoginViewModel();
+
+            this.DataContext = viewModel;
+
         }
 
 
@@ -37,8 +40,9 @@ namespace WPF_LoginUI
         {
 
 
-            if (loginModel.UserName == "123" && loginModel.Password == "2")
+            if (viewModel.LoginM.UserName == "123" && viewModel.LoginM.Password == "2")
             {
+                SystemSounds.Asterisk.Play();
                 MessageBox.Show("登录成功");
                 Index index = new Index();
                 index.Show();
@@ -48,44 +52,12 @@ namespace WPF_LoginUI
             {
                 SystemSounds.Asterisk.Play();
                 MessageBox.Show("输入的用户名和密码不正确");
+
                 
             }
-            loginModel.UserName = "";
-            loginModel.Password = "";
+            viewModel.LoginM.UserName = "";
+            viewModel.LoginM.Password = "";
+            viewModel.LoginM = viewModel.LoginM;
         }
     }
-}
- public class LoginModel:INotifyPropertyChanged
-{
-    public event PropertyChangedEventHandler PropertyChanged;
-    private void RaisePropertyChanged(string propertyName)
-    {
-        PropertyChangedEventHandler handler = PropertyChanged;
-        if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
-    }
-
-    private string _UserName;
-
-    public string UserName
-    {
-        get { return _UserName; }
-        set
-        {
-            _UserName = value;
-            RaisePropertyChanged("UserName");
-        }
-    }
-
-    private string _Password;
-
-    public string Password
-    {
-        get { return _Password; }
-        set
-        {
-            _Password = value;
-            RaisePropertyChanged("Password");
-        }
-    }
-
 }
