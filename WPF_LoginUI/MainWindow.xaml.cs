@@ -26,33 +26,10 @@ namespace WPF_LoginUI
         public MainWindow()
         {
             InitializeComponent();
-            viewModel = new LoginViewModel();  
+            viewModel = new LoginViewModel(this);  
 
             this.DataContext = viewModel;
         }
 
-
-        
-        private void Button_click(object sender, RoutedEventArgs e)
-        {
-
-
-            if (viewModel.UserName == "123" && viewModel.Password == "2")
-            {
-                SystemSounds.Asterisk.Play();
-                MessageBox.Show("登录成功");
-                Index index = new Index();
-                index.Show();
-                this.Close();
-            }
-            else
-            {
-                SystemSounds.Asterisk.Play();
-                MessageBox.Show("输入的用户名和密码不正确");
-                
-            }
-            viewModel.UserName = "";
-            viewModel.Password = "";
-        }
     }
 }

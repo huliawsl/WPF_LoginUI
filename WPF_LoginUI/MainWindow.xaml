@@ -41,8 +41,7 @@
             <TextBox Text="{Binding Password}" Margin="2" Grid.Row="1" Grid.Column="1"/>
 
             <CheckBox  Content="记住密码" Grid.Row="2" Grid.ColumnSpan="2" Margin="0,4,0,0" Grid.RowSpan="2"/>
-            <Button Content="登录" Grid.Row="3" Grid.ColumnSpan="2" Click="Button_click"/>
+            <Button Content="登录" Grid.Row="3" Grid.ColumnSpan="2" Command="{Binding LoginAction}"/>
         </Grid> 
-       
     </Grid>
 </Window>
