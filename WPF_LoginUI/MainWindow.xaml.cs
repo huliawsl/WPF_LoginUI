@@ -31,5 +31,9 @@ namespace WPF_LoginUI
             this.DataContext = viewModel;
         }
 
+        private void CustomButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
